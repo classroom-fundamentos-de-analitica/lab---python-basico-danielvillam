@@ -251,7 +251,7 @@ def pregunta_07():
         x = [line.split(" ") for line in x]
         aux=[]
         for i in x:
-            aux.append((i[1],i[0]))
+            aux.append((int(i[1]),i[0]))
 
         contador = {}
         for key, value in aux:
@@ -259,11 +259,8 @@ def pregunta_07():
                 contador[key] = list(value)
             else:
                 contador[key].append(value)
-        lis=[]
-        for key in contador:
-            lis.append((key,contador.get(key)))
-
-    return list(sorted(lis))
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_08():
@@ -295,7 +292,7 @@ def pregunta_08():
         x = [line.split(" ") for line in x]
         aux=[]
         for i in x:
-            aux.append((i[1],i[0]))
+            aux.append((int(i[1]),i[0]))
 
         contador = {}
         for key, value in aux:
