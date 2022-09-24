@@ -120,7 +120,6 @@ def pregunta_04():
         x = [line.split(" ") for line in x]
         z = [line[2].split("-") for line in x]
         lis=[]
-        print(x)
         for i in z:
             lis.append((i[1],1))
         contador = {}
@@ -144,7 +143,7 @@ def pregunta_05():
     ]
 
     """
-    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
         x = [line.replace("\t", " ") for line in x]
