@@ -12,7 +12,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,7 +20,15 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", ",") for line in x]
+        x = [line.split(",") for line in x]
+        suma=0
+        for line in x:
+            suma += int(line[1])      
+    return suma
 
 
 def pregunta_02():
@@ -39,7 +46,19 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", ",") for line in x]
+        x = [line.split(",") for line in x]
+        lis=[]
+        for i in x:
+            lis.append((i[0],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_03():
@@ -258,3 +277,4 @@ def pregunta_12():
 
     """
     return
+
