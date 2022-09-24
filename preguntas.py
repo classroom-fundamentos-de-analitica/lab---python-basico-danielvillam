@@ -326,7 +326,21 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[4].split(",") for line in x]
+        z = [j.split(":") for i in z for j in i]
+        lis=[]
+        for i in z:
+            lis.append((i[0],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
 
 
 def pregunta_10():
@@ -387,4 +401,3 @@ def pregunta_12():
 
     """
     return
-
