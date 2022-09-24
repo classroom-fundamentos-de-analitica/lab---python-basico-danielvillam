@@ -387,5 +387,3 @@ def pregunta_12():
 
     """
     return
-if __name__ == "__main__":
-    print(pregunta_08())
