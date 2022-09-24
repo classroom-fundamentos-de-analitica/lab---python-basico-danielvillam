@@ -23,8 +23,8 @@ def pregunta_01():
     with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
-        x = [line.replace("\t", ",") for line in x]
-        x = [line.split(",") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
         suma=0
         for line in x:
             suma += int(line[1])      
@@ -49,8 +49,8 @@ def pregunta_02():
     with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
-        x = [line.replace("\t", ",") for line in x]
-        x = [line.split(",") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
         lis=[]
         for i in x:
             lis.append((i[0],1))
@@ -79,8 +79,8 @@ def pregunta_03():
     with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
-        x = [line.replace("\t", ",") for line in x]
-        x = [line.split(",") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
         lis=[]
         for i in x:
             lis.append((i[0],int(i[1])))
@@ -113,8 +113,21 @@ def pregunta_04():
     ]
 
     """
-    return
-
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[2].split("-") for line in x]
+        lis=[]
+        print(x)
+        for i in z:
+            lis.append((i[1],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        
+    return list(sorted(contador.items()))
 
 def pregunta_05():
     """
@@ -131,7 +144,30 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis=[]
+        for i in x:
+            lis.append((i[0],int(i[1]),int(i[1])))
+        contador = {}
+        contador2 = {}
+        for key, ma, mi in lis:
+            if contador.get(key) is None:
+                contador[key] = contador.get(key, ma)
+                contador2[key] = contador2.get(key, mi)
+            else:
+                if contador[key]<ma:
+                    contador[key] = ma
+                if mi<contador2[key]:
+                    contador2[key]=mi
+        l=[]
+        for key in contador:
+            l.append((key,contador.get(key),contador2.get(key)))
+
+    return list(sorted(l))
 
 
 def pregunta_06():
@@ -156,7 +192,33 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[4].split(",") for line in x]
+        z = [j.split(":") for i in z for j in i]
+        lis=[]
+        for i in z:
+            lis.append((i[0],int(i[1]),int(i[1])))
+        contador = {}
+        contador2 = {}
+        for key, mi, ma in lis:
+            if contador.get(key) is None:
+                contador[key] = contador.get(key, mi)
+                contador2[key] = contador2.get(key, ma)
+            else:
+                if mi<contador[key]:
+                    contador[key] = mi
+                if contador2[key]<ma:
+                    contador2[key]=ma
+        l=[]
+        for key in contador:
+            l.append((key,contador.get(key),contador2.get(key)))
+
+    return list(sorted(l))
+        
 
 
 def pregunta_07():
