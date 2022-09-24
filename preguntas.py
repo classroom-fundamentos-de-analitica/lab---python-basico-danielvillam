@@ -259,8 +259,11 @@ def pregunta_07():
                 contador[key] = list(value)
             else:
                 contador[key].append(value)
-        
-    return list(sorted(contador.items()))
+        lis=[]
+        for key in contador:
+            lis.append((key,contador.get(key)))
+
+    return list(sorted(lis))
 
 
 def pregunta_08():
@@ -387,3 +390,4 @@ def pregunta_12():
 
     """
     return
+
