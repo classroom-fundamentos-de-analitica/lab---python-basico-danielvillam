@@ -20,7 +20,7 @@ def pregunta_01():
     214
 
     """
-    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
         x = [line.replace("\t", ",") for line in x]
@@ -46,7 +46,7 @@ def pregunta_02():
     ]
 
     """
-    with open("C:\\Users\\danii\\Documents\\GitHub\\lab---python-basico-danielvillam\\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         x = file.readlines()
         x = [line.replace("\n", "") for line in x]
         x = [line.replace("\t", ",") for line in x]
