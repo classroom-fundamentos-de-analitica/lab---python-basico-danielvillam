@@ -12,6 +12,9 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+from logging import logMultiprocessing
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -241,7 +244,23 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        aux=[]
+        for i in x:
+            aux.append((i[1],i[0]))
+
+        contador = {}
+        for key, value in aux:
+            if contador.get(key) is None:
+                contador[key] = list(value)
+            else:
+                contador[key].append(value)
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_08():
@@ -266,7 +285,25 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        aux=[]
+        for i in x:
+            aux.append((i[1],i[0]))
+
+        contador = {}
+        for key, value in aux:
+            if contador.get(key) is None:
+                contador[key] = list(value)
+            else:
+                if value not in contador.get(key):
+                    contador[key].append(value)
+                    contador[key].sort()
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_09():
@@ -350,3 +387,5 @@ def pregunta_12():
 
     """
     return
+if __name__ == "__main__":
+    print(pregunta_08())
