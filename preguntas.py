@@ -12,8 +12,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
-from logging import logMultiprocessing
-
 
 def pregunta_01():
     """
@@ -361,7 +359,20 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        y = [line[3].split(",") for line in x]
+        z = [line[4].split(",") for line in x]
+        lis=[]
+        cont=0
+        for i in z:
+            lis.append((x[cont][0],len(y[cont]),len(i)))
+            cont+=1
+        
+    return lis
 
 
 def pregunta_11():
@@ -382,7 +393,22 @@ def pregunta_11():
 
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z=[]
+        [z.append((line[3],line[1])) for line in x]
+        y=[]
+        [y.append((line[0].split(","),int(line[1]))) for line in z]
+        a=[]
+        [a.append((j[w],int(i[1]))) for i in y for j in i[0] for w in range(len(j))]
+        contador = {}
+        for key, value in a:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
 
 
 def pregunta_12():
