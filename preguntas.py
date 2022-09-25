@@ -448,7 +448,3 @@ def pregunta_12():
             contador[key] = contador.get(key, 0) + value
         contador_sort = sorted(contador.items())
     return dict(contador_sort)
-
-
-if __name__ == "__main__":
-    print(pregunta_12())
