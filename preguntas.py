@@ -426,4 +426,29 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis = [line[0] for line in x]
+        z=[]
+        [z.append(line[4]) for line in x]
+        y=[]
+        [y.append(line.split(",")) for line in z]
+        a=[]
+        cont=0
+        for i in y:
+            for j in i:
+                f=j.split(":")
+                a.append((lis[cont],int(f[1])))
+            cont+=1
+        contador = {}
+        for key, value in a:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
+
+
+if __name__ == "__main__":
+    print(pregunta_12())
