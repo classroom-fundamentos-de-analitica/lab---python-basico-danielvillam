@@ -21,7 +21,15 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        suma=0
+        for line in x:
+            suma += int(line[1])      
+    return suma
 
 
 def pregunta_02():
@@ -39,7 +47,19 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis=[]
+        for i in x:
+            lis.append((i[0],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_03():
@@ -57,7 +77,19 @@ def pregunta_03():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis=[]
+        for i in x:
+            lis.append((i[0],int(i[1])))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_04():
@@ -82,8 +114,20 @@ def pregunta_04():
     ]
 
     """
-    return
-
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[2].split("-") for line in x]
+        lis=[]
+        for i in z:
+            lis.append((i[1],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        
+    return list(sorted(contador.items()))
 
 def pregunta_05():
     """
@@ -100,7 +144,30 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis=[]
+        for i in x:
+            lis.append((i[0],int(i[1]),int(i[1])))
+        contador = {}
+        contador2 = {}
+        for key, ma, mi in lis:
+            if contador.get(key) is None:
+                contador[key] = contador.get(key, ma)
+                contador2[key] = contador2.get(key, mi)
+            else:
+                if contador[key]<ma:
+                    contador[key] = ma
+                if mi<contador2[key]:
+                    contador2[key]=mi
+        l=[]
+        for key in contador:
+            l.append((key,contador.get(key),contador2.get(key)))
+
+    return list(sorted(l))
 
 
 def pregunta_06():
@@ -125,7 +192,33 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[4].split(",") for line in x]
+        z = [j.split(":") for i in z for j in i]
+        lis=[]
+        for i in z:
+            lis.append((i[0],int(i[1]),int(i[1])))
+        contador = {}
+        contador2 = {}
+        for key, mi, ma in lis:
+            if contador.get(key) is None:
+                contador[key] = contador.get(key, mi)
+                contador2[key] = contador2.get(key, ma)
+            else:
+                if mi<contador[key]:
+                    contador[key] = mi
+                if contador2[key]<ma:
+                    contador2[key]=ma
+        l=[]
+        for key in contador:
+            l.append((key,contador.get(key),contador2.get(key)))
+
+    return list(sorted(l))
+        
 
 
 def pregunta_07():
@@ -149,7 +242,23 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        aux=[]
+        for i in x:
+            aux.append((int(i[1]),i[0]))
+
+        contador = {}
+        for key, value in aux:
+            if contador.get(key) is None:
+                contador[key] = list(value)
+            else:
+                contador[key].append(value)
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_08():
@@ -174,7 +283,25 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        aux=[]
+        for i in x:
+            aux.append((int(i[1]),i[0]))
+
+        contador = {}
+        for key, value in aux:
+            if contador.get(key) is None:
+                contador[key] = list(value)
+            else:
+                if value not in contador.get(key):
+                    contador[key].append(value)
+                    contador[key].sort()
+        
+    return list(sorted(contador.items()))
 
 
 def pregunta_09():
@@ -197,7 +324,21 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z = [line[4].split(",") for line in x]
+        z = [j.split(":") for i in z for j in i]
+        lis=[]
+        for i in z:
+            lis.append((i[0],1))
+        contador = {}
+        for key, value in lis:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
 
 
 def pregunta_10():
@@ -218,7 +359,20 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        y = [line[3].split(",") for line in x]
+        z = [line[4].split(",") for line in x]
+        lis=[]
+        cont=0
+        for i in z:
+            lis.append((x[cont][0],len(y[cont]),len(i)))
+            cont+=1
+        
+    return lis
 
 
 def pregunta_11():
@@ -239,7 +393,22 @@ def pregunta_11():
 
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        z=[]
+        [z.append((line[3],line[1])) for line in x]
+        y=[]
+        [y.append((line[0].split(","),int(line[1]))) for line in z]
+        a=[]
+        [a.append((j[w],int(i[1]))) for i in y for j in i[0] for w in range(len(j))]
+        contador = {}
+        for key, value in a:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
 
 
 def pregunta_12():
@@ -257,4 +426,25 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("data.csv", "r") as file:
+        x = file.readlines()
+        x = [line.replace("\n", "") for line in x]
+        x = [line.replace("\t", " ") for line in x]
+        x = [line.split(" ") for line in x]
+        lis = [line[0] for line in x]
+        z=[]
+        [z.append(line[4]) for line in x]
+        y=[]
+        [y.append(line.split(",")) for line in z]
+        a=[]
+        cont=0
+        for i in y:
+            for j in i:
+                f=j.split(":")
+                a.append((lis[cont],int(f[1])))
+            cont+=1
+        contador = {}
+        for key, value in a:
+            contador[key] = contador.get(key, 0) + value
+        contador_sort = sorted(contador.items())
+    return dict(contador_sort)
